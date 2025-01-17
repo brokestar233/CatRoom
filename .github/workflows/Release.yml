@@ -40,7 +40,7 @@ jobs:
         run: ./gradlew --stop
         
       - name: ziping
-        run: tar -czvf CatRoom.tar.gz ./
+        run: tar -czvf CatRoom.tar.gz ./projects
         
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
