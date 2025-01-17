@@ -1,7 +1,9 @@
 name: Auto Releases
 
 on:
-  workflow_dispatch:
+  create:
+    tags:
+      - v*
 
 jobs:
 
@@ -38,7 +40,11 @@ jobs:
 
       - name: Stop Gradle daemon again
         run: ./gradlew --stop
+        
+      - name: ziping
+        run: zip CatRoom.zip build/libs
+        
       - uses: ncipollo/release-action@v1.14.0
         with:
-          artifacts: "projects/cleanroom/build/libs/*"
+          artifacts: "projects/cleanroom/CatRoom.zip"
           generateReleaseNotes: true
