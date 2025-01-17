@@ -1,9 +1,7 @@
 name: Auto Releases
 
 on:
-  create:
-    tags:
-      - v*
+  workflow_dispatch:
 
 jobs:
 
@@ -44,7 +42,13 @@ jobs:
       - name: ziping
         run: zip CatRoom.zip ./*
         
-      - uses: ncipollo/release-action@v1.14.0
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v2
         with:
-          artifacts: "projects/cleanroom/CatRoom.zip"
-          generateReleaseNotes: true
+         tag_name: prerelease
+         name: Release ${{ github.ref }}
+         body: TODO New Release.
+         draft: false
+         prerelease: true
+         files: |
+           CatRoom.zip
