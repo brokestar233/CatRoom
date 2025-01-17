@@ -38,9 +38,7 @@ jobs:
 
       - name: Stop Gradle daemon again
         run: ./gradlew --stop
-        
-      - name: ziping
-        run: tar -czvf CatRoom.tar.gz ./projects
+
         
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v2
@@ -51,4 +49,4 @@ jobs:
          draft: false
          prerelease: true
          files: |
-           CatRoom.tar.gz
+           ./projects/cleanroom/build/libs/cleanroom-*-installer.jar
